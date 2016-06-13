@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./Home.xhtml">
+
+            <ui:define name="top">
+                <h:outputLink value="Home.xhtml">
+                    Anasayfa
+                </h:outputLink>
+                <h:form >
+                    <center>
+                        <h:panelGrid columns="2" rendered="#{not signInBean.signedIn}">
+                            <h:outputLabel value="Lütfen Kullanıcı Adı ve Parolanızı Girin."/> <br/><br/>
+                            <h:outputLabel value="Kullanıcı Adı : "/>
+                            <h:inputText value="#{signInBean.nickName}"/>
+                            <h:outputLabel value="Parola : "/>
+                            <h:inputSecret value="#{signInBean.password}"/>
+                            <h:commandButton value="Sign In" action="#{signInBean.signIn()}">
+                                <f:param name="userId" value="#{signInBean.user.userId}"/>
+                            </h:commandButton>
+                        </h:panelGrid>
+                    </center>
+                </h:form>
+                <h:form rendered="#{signInBean.signedIn}">
+                    <center><h:commandButton value="Çıkış" action="#{signInBean.signOut()}"/></center>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                <center>
+                    <h:outputLink value="UsersKayit.xhtml" rendered="#{not signInBean.signedIn}">
+                        Kullanıcı Kayıt
+                        <f:param name="userId" value="-1"/>
+                    </h:outputLink><br/><br/>
+                </center>
+
+                <center>
+                    <h:panelGrid columns="2" rendered="#{signInBean.signedIn}">
+                        <h:outputText value="Hoş Geldin  #{signInBeanuser0r.userName} Kardeş"/><br/><br/>
+
+                        <h:outputLabel value="ID"/>
+                        <h:outputText value="#{signInBeanuser0r.userId}"/><br/><br/>
+
+                        <h:outputLink value="UsersKayit.xhtml" rendered="#{signInBeuser0ser.degree.degreeId > 13}">
+                            Kullanıcı Kayıt
+                            <f:param name="userId" value="#{signInBeauser0er.userId}"/>
+                        </h:outputLink><br/><br/>
+
+                        <h:outputLink value="YorumList.xhtml">
+                            Kullanıcının Yorumları
+                            <f:param name="userId" value="#{signInBeuser0ser.userId}"/>
+                        </h:outputLink><br/><br/>
+                    </h:panelGrid>
+                </center>
+            </ui:define>
+
+            <ui:define name="left">
+                <h:form rendered="#{signInBean.signedIn}">
+                    <center>
+                        <h:outputLink value="KategoriListe.xhtml">
+                            Kategoriler
+                            <f:param name="userId" value="#{signInBuser0user.userId}"/>
+                        </h:outputLink><br/><br/>
+
+                        <h:outputLink value="KategoriKayit.xhtml">
+                            Kategori Ekle
+                            <f:param name="userId" value="#{signInuser0.user.userId}"/>
+                        </h:outputLink><br/><br/>
+
+                        <h:outputLink value="UsersListe.xhtml">
+                            Kullanıcılar
+                        </h:outputLink>
+                    </center>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <center>
+                    <h:outputLink value="YorumList.xhtml" rendered="#{signInBean.signedIn}">
+                        Tum Yorumlar
+                        <f:param name="tumYorumlarIstek" value="true"/>
+                    </h:outputLink>
+                </center>
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

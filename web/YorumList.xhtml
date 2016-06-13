@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Home.xhtml">
+
+            <ui:define name="content">
+                <h:form rendered="#{yorumListBean.publictenYorumIstek}">
+                    <center>
+                        <h:outputLabel value="Yorumlar"/>
+                        <h:dataTable value="#{yorumListBean.yorumList}" var="yorum">
+                            <h:column>
+                                <f:facet name="">Yorum Id</f:facet>
+                                <h:outputText value="#{yorum.yorumId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="">Yorum Content</f:facet>
+                                <h:outputText value="#{yorum.yorumContent}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </center>
+                </h:form>
+
+                <h:form rendered="#{not yorumListBean.publictenYorumIstek}">
+                    <center>
+                        <h:panelGrid columns="2" rendered="#{yorumListBean.konu.konuId!=0}">
+                            <h:outputLabel value="Konu ID"/>
+                            <h:outputText value="#{yorumListBean.konu.konuId}"/>
+                            <h:outputLabel value="Konu Title"/>
+                            <h:outputText value="#{yorumListBean.konu.konuTitle}"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" rendered="#{yorumListBean.konu.konuId==0}">
+                            <h:outputLabel value="Yorumlar"/>
+                        </h:panelGrid>
+
+                        <h:dataTable value="#{yorumListBean.yorumList}" var="yorum">
+                            <h:column>
+                                <f:facet name="">Konu Id</f:facet>
+                                <h:outputText value="#{yorum.yorumId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="">Konu Title</f:facet>
+                                <h:outputText value="#{yorum.yorumContent}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </center>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

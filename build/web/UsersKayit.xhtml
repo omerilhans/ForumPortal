@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Home.xhtml">
+
+            <ui:define name="top">
+                <h:form>
+                    <h:outputLink value="Home.xhtml">
+                        Anasayfa
+                    </h:outputLink>
+                    <center>
+                        <h:outputLink value="Login.xhtml">Giriş Yap
+                            <f:param name="userId" value="0"/>
+                        </h:outputLink><br/><br/> 
+                    </center>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <center>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="ID"/>
+                            <h:outputText value="#{usersKayitBean.user.userId}"/>
+                            <h:outputLabel value="Name"/>
+                            <h:inputText value="#{usersKayitBean.user.userName}"/>
+                            <h:outputLabel value="Surname"/>
+                            <h:inputText value="#{usersKayitBean.user.userSurname}"/>
+                            <h:outputLabel value="Nickname"/>
+                            <h:inputText value="#{usersKayitBean.user.userNickname}"/>
+                            <h:outputLabel value="Password"/>
+                            <h:inputText value="#{usersKayitBean.user.userPassword}"/>
+                            <h:outputLabel value="E-mail"/>
+                            <h:inputText value="#{usersKayitBean.user.userEmail}"/>
+                            <h:outputLabel value="Sex"/>
+                            <h:inputText value="#{usersKayitBean.user.userSex}"/>
+                            <h:outputLabel value="Homeland"/>
+                            <h:inputText value="#{usersKayitBean.user.userHomeland}"/>
+
+
+                            <h:selectOneMenu value="#{usersKayitBean.selectedDegreeId}" rendered="#{not usersKayitBean.userAdminDegree}">
+                                <f:selectItem itemValue="1" itemLabel="Çaylak"/>
+                            </h:selectOneMenu>
+                            <h:selectOneMenu value="#{usersKayitBean.selectedDegreeId}" rendered="#{usersKayitBean.userAdminDegree}">
+                                <f:selectItem itemValue="0" itemLabel="Seçin"/>
+                                <f:selectItems value="#{humanAppBean.degreeList}" var="degList"
+                                               itemValue="#{degList.degreeId}" itemLabel="#{degList.degreeName}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                        <h:commandButton value="Sakla" action="#{usersKayitBean.save()}"/>
+                    </center>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="left"><center>
+                    <h:outputLink value="KategoriListe.xhtml">
+                        Kategoriler
+                    </h:outputLink>
+                    <br/><br/><br/>
+                    <h:outputLink value="UsersListe.xhtml">
+                        Kullanıcılar
+                    </h:outputLink></center>
+            </ui:define>
+
+            <ui:define name="right">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

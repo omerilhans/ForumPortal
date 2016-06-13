@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Home.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <center>
+                        <h:panelGrid columns="2" rendered="#{kategoriKayitBean.isMod}">
+                            <h:outputLabel value="ID"/>
+                            <h:outputText value="#{kategoriKayitBean.kategori.kategoriId}"/>
+                            <h:outputLabel value="Title"/>
+                            <h:inputText value="#{kategoriKayitBean.kategori.kategoriTitle}"/>
+                            <h:commandButton value="Sakla" action="#{kategoriKayitBean.save()}"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" rendered="#{kategoriKayitBean.isUser}">
+                            <h:outputLabel value="Kategori Eklemek İçin Admin/Mod Yetkisine Sahip Değilsiniz!"/>
+                            <br/><br/><br/>
+                            <h:outputLabel value="Lütfen Bir Admin/Mod ile Temasa Geçin..."/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" rendered="#{kategoriKayitBean.publicPage}">
+                            <h:outputLabel value="Ana Sayfadasınız. Kategori Eklenmesini İstiyorsanız
+                                           Lütfen Öncelikle Giriş Yapın. Sonra Admin veya Moderatorlerle İletişime Geçin..."/><br/>
+                        </h:panelGrid>
+                    </center>
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
+
+    </body>
+</html>

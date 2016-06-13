@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Home.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <center>
+                        <h:panelGrid columns="2" rendered="#{(not userShowBean.degreeAdmin) || (not userShowBean.setDegreeAdmin(degreeAdmin))}">
+                            <h:outputLabel value="ID : "/>
+                            <h:outputText value="#{userShowBean.user.userId}"/>
+                            <h:outputLabel value="Name : "/>
+                            <h:outputText value="#{userShowBean.user.userName}"/>
+                            <h:outputLabel value="Surname : "/>
+                            <h:outputText value="#{userShowBean.user.userSurname}"/>
+                            <h:outputLabel value="Nickname : "/>
+                            <h:outputText value="#{userShowBean.user.userNickname}"/>
+                            <h:outputLabel value="E-mail : "/>
+                            <h:outputText value="#{userShowBean.user.userEmail}"/>
+                            <h:outputLabel value="Sex : "/>
+                            <h:outputText value="#{userShowBean.user.userSex}"/>
+                            <h:outputLabel value="Homeland : "/>
+                            <h:outputText value="#{userShowBean.user.userHomeland}"/>
+                            <h:outputLabel value="User Degree : "/>
+                            <h:outputText value="#{userShowBean.user.degree.degreeName}"/>
+                        </h:panelGrid>
+                    </center>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

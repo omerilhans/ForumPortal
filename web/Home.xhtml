@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/tableLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <center>
+            <table width="850px" height="500px" border="1">
+                <tr height="50px">
+                    <td colspan="3">
+                        <ui:insert name="top">
+                            <h:form>
+                                <h:outputLink value="Home.xhtml">
+                                    Anasayfa
+                                </h:outputLink>
+                                <center>
+                                    <h:outputLink value="Login.xhtml">Giriş Yap
+                                        <f:param name="userId" value="0"/>
+                                    </h:outputLink><br/><br/> 
+
+                                    <h:outputLink value="UsersKayit.xhtml">Kayıt Ol
+                                        <f:param name="userId" value="-1"/>
+                                    </h:outputLink> 
+                                </center>
+                            </h:form>
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">
+                        <ui:insert name="left">
+                            <center>
+                                <h:outputLink value="KategoriListe.xhtml">
+                                    Kategoriler
+                                </h:outputLink>
+                                <br/><br/><br/>
+                                <h:outputLink value="KategoriKayit.xhtml">
+                                    Kategori Ekle
+                                </h:outputLink>
+                                <br/><br/><br/>
+                                <h:outputLink value="UsersListe.xhtml">
+                                    Kullanıcılar
+                                </h:outputLink>
+                                <br/><br/><br/>
+                            </center>
+                        </ui:insert>
+                    </td>
+                    <td id="content">
+                        <ui:insert name="content">
+                            <center>
+                                <h:outputLink value="YorumList.xhtml?publictenYorumIstek=true">
+                                    Yorumlar
+                                    <f:param name="" value=""/>
+                                </h:outputLink>
+                            </center>
+                        </ui:insert>
+                    </td>
+                    <td id="right">
+                        <ui:insert name="right">
+                            <center>
+                                <h:outputLink value="YorumEkle.xhtml?yorumId=-1">
+                                    Yorum Ekle
+                                </h:outputLink>
+                            </center>
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="bottom" colspan="3">
+                        <ui:insert name="bottom">
+                            <center><h5>Tüm hakları saklıdır.</h5></center>
+                        </ui:insert>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </h:body>
+
+</html>
